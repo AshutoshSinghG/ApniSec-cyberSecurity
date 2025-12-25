@@ -2,7 +2,7 @@
 
 A full-stack cybersecurity issue management platform built with Next.js 15, MongoDB, and TypeScript. This application provides a comprehensive solution for managing Cloud Security, Red Team, and VAPT (Vulnerability Assessment and Penetration Testing) issues.
 
-## 🚀 Features
+## Features
 
 ### Authentication
 - Custom JWT-based authentication (no third-party services)
@@ -38,7 +38,7 @@ A full-stack cybersecurity issue management platform built with Next.js 15, Mong
 - Smooth animations and transitions
 - Dark mode with gradient accents
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **Next.js 15** - React framework with App Router
@@ -62,67 +62,8 @@ A full-stack cybersecurity issue management platform built with Next.js 15, Mong
 - **Validator Layer** - Input validation
 - **Middleware Layer** - Authentication and rate limiting
 
-## 📁 Project Structure
 
-```
-ApniSec/
-├── app/
-│   ├── api/
-│   │   ├── auth/
-│   │   │   ├── register/route.ts
-│   │   │   ├── login/route.ts
-│   │   │   ├── logout/route.ts
-│   │   │   └── me/route.ts
-│   │   ├── users/
-│   │   │   └── profile/route.ts
-│   │   └── issues/
-│   │       ├── route.ts
-│   │       └── [id]/route.ts
-│   ├── login/page.tsx
-│   ├── register/page.tsx
-│   ├── dashboard/page.tsx
-│   ├── profile/page.tsx
-│   ├── page.tsx
-│   ├── layout.tsx
-│   └── globals.css
-├── src/
-│   └── backend/
-│       ├── db/
-│       │   └── mongo.ts
-│       ├── models/
-│       │   ├── User.ts
-│       │   └── Issue.ts
-│       ├── repositories/
-│       │   ├── UserRepository.ts
-│       │   └── IssueRepository.ts
-│       ├── services/
-│       │   ├── AuthService.ts
-│       │   ├── UserService.ts
-│       │   └── IssueService.ts
-│       ├── handlers/
-│       │   ├── AuthHandler.ts
-│       │   ├── UserHandler.ts
-│       │   └── IssueHandler.ts
-│       ├── validators/
-│       │   ├── AuthValidator.ts
-│       │   └── IssueValidator.ts
-│       ├── middleware/
-│       │   ├── AuthMiddleware.ts
-│       │   └── RateLimiter.ts
-│       ├── emails/
-│       │   ├── EmailService.ts
-│       │   └── templates.ts
-│       └── errors/
-│           └── ApiError.ts
-├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
-├── next.config.ts
-├── .env.example
-└── README.md
-```
-
-## 🔧 Environment Variables
+## Environment Variables
 
 Create a `.env` file in the root directory with the following variables:
 
@@ -140,7 +81,7 @@ RESEND_API_KEY=re_your_resend_api_key_here
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 - Node.js 18+ installed
@@ -151,7 +92,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 1. **Clone or navigate to the project directory**
    ```bash
-   cd "a:\Compnies Task\ApniSec"
+   cd "a:\ApniSec"
    ```
 
 2. **Install dependencies**
@@ -178,7 +119,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 6. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🚀 Running Locally
+## Running Locally
 
 ### Development Mode
 ```bash
@@ -197,7 +138,7 @@ npm start
 npm run lint
 ```
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Authentication
 - `POST /api/auth/register` - Register a new user
@@ -219,7 +160,7 @@ npm run lint
 ### Rate Limiting
 All endpoints are rate-limited to 100 requests per 15 minutes per IP address.
 
-## 🌐 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 
@@ -260,7 +201,7 @@ All endpoints are rate-limited to 100 requests per 15 minutes per IP address.
 2. Get your API key
 3. Update `RESEND_API_KEY` in your environment variables
 
-## 🧪 Testing the Application
+## Testing the Application
 
 ### 1. Register a New User
 - Go to `/register`
@@ -293,7 +234,7 @@ All endpoints are rate-limited to 100 requests per 15 minutes per IP address.
 - Make more than 100 requests in 15 minutes
 - You should receive a 429 error with rate limit headers
 
-## 🎨 Design Decisions
+## Design Decisions
 
 ### OOP Architecture
 The backend follows a strict Object-Oriented Programming approach with clear separation of concerns:
@@ -315,7 +256,7 @@ The backend follows a strict Object-Oriented Programming approach with clear sep
 - Real-time feedback with success/error messages
 - Smooth animations and transitions
 
-## 📝 Code Quality
+## Code Quality
 
 ### Human-Written Style
 The code is written to look like it was created by a real junior developer:
@@ -331,7 +272,7 @@ The code is written to look like it was created by a real junior developer:
 // connect to database
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### MongoDB Connection Error
 - Ensure MongoDB is running
@@ -347,21 +288,3 @@ The code is written to look like it was created by a real junior developer:
 - Rate limits reset every 15 minutes
 - Clear browser cookies if needed
 - Check console for rate limit headers
-
-## 📄 License
-
-This project is created for educational purposes as part of an SDE intern assignment.
-
-## 👨‍💻 Author
-
-Built with ❤️ for ApniSec
-
----
-
-**Note**: This is a demonstration project. For production use, consider adding:
-- Database-backed rate limiting (Redis)
-- More comprehensive error handling
-- Unit and integration tests
-- CI/CD pipeline
-- Monitoring and logging
-- Backup strategies
