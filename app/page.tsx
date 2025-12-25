@@ -98,7 +98,7 @@ export default function Home() {
                             </div>
                             <h3 className="text-2xl font-bold text-white mb-4">Red Team Assessment</h3>
                             <p className="text-gray-400">
-                                Advanced adversary simulation and attack scenarios to test your organization's detection and response capabilities.
+                                Advanced adversary simulation and attack scenarios to test your organization&apos;s detection and response capabilities.
                             </p>
                         </div>
 

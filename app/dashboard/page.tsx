@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -43,10 +43,38 @@ export default function DashboardPage() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
+    const checkAuth = useCallback(async () => {
+        try {
+            const response = await fetch('/api/auth/me');
+            if (!response.ok) {
+                router.push('/login');
+                return;
+            }
+            const data = await response.json();
+            setUser(data.user);
+        } catch (err) {
+            router.push('/login');
+        } finally {
+            setLoading(false);
+        }
+    }, [router]);
+
+    const fetchIssues = useCallback(async () => {
+        try {
+            const response = await fetch('/api/issues');
+            if (response.ok) {
+                const data = await response.json();
+                setIssues(data.issues);
+            }
+        } catch (err) {
+            console.error('Failed to fetch issues:', err);
+        }
+    }, []);
+
     useEffect(() => {
         checkAuth();
         fetchIssues();
-    }, []);
+    }, [checkAuth, fetchIssues]);
 
     useEffect(() => {
         let filtered = issues;
@@ -77,34 +105,6 @@ export default function DashboardPage() {
 
         setFilteredIssues(filtered);
     }, [filter, priorityFilter, statusFilter, searchQuery, issues]);
-
-    const checkAuth = async () => {
-        try {
-            const response = await fetch('/api/auth/me');
-            if (!response.ok) {
-                router.push('/login');
-                return;
-            }
-            const data = await response.json();
-            setUser(data.user);
-        } catch (err) {
-            router.push('/login');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const fetchIssues = async () => {
-        try {
-            const response = await fetch('/api/issues');
-            if (response.ok) {
-                const data = await response.json();
-                setIssues(data.issues);
-            }
-        } catch (err) {
-            console.error('Failed to fetch issues:', err);
-        }
-    };
 
     const handleCreateIssue = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -531,12 +531,12 @@ export default function DashboardPage() {
                                     <div className="flex gap-2">
                                         <span
                                             className={`px-3 py-1 rounded-full text-xs font-semibold ${issue.priority === 'critical'
-                                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                                                    : issue.priority === 'high'
-                                                        ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
-                                                        : issue.priority === 'medium'
-                                                            ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-                                                            : 'bg-primary/20 text-primary border border-primary/30'
+                                                ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                                                : issue.priority === 'high'
+                                                    ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                                                    : issue.priority === 'medium'
+                                                        ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                                                        : 'bg-primary/20 text-primary border border-primary/30'
                                                 }`}
                                         >
                                             {issue.priority}
